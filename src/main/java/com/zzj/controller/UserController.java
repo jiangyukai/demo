@@ -38,6 +38,12 @@ public class UserController {
 
         return userService.findAllUser(pageNum,pageSize);
     }
+
+    @RequestMapping("/test")
+    public String test(){
+
+        return "test";
+    }
 }
 
 
