@@ -15,12 +15,14 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="/css/login.css" rel="stylesheet" />
     <link th:href="@{/css/login.css}" rel="stylesheet">
+    <script src="/js/login/login.js"></script>
+    <script src="/layer/layer.js"></script>
 </head>
 <body>
 <div class="container">
     <div class="form row">
         <div class="form-horizontal col-md-offset-3" id="login_form">
-            <h3 class="form-title">登录</h3>
+            <h3 class="form-title">LOGIN</h3>
             <div class="col-md-9">
                 <div class="form-group">
                     <i class="fa fa-user fa-lg"></i>
@@ -36,7 +38,10 @@
                     </label>
                 </div>
                 <div class="form-group col-md-offset-9">
-                    <button type="submit" class="btn btn-success pull-right" name="submit">登录</button>
+                    <button type="submit" class="btn btn-success pull-right" name="submit" id="btnLogin">登录</button>
+                </div>
+                <div class="form-group col-md-offset-9" style="align-items: center;justify-content: center;display: flex;">
+                    <a style="color: blue;cursor:pointer" onclick="registerNow()">没有账号，立即注册</a>
                 </div>
             </div>
         </div>
