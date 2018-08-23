@@ -1,7 +1,9 @@
 package com.zzj.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @类名 LoginController
@@ -23,7 +25,12 @@ public class LoginController {
      */
     @RequestMapping("/userLogin")
     public String login(){
-
         return "login";
+    }
+    @RequestMapping("/userRegister")
+    @ResponseBody
+    public String register(){
+
+        return null;
     }
 }
