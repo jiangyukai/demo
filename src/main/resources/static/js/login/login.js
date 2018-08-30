@@ -37,6 +37,17 @@ $(document).ready(function(){
 
 function startLogin(username,password){
     layer.msg("用户名："+username+"&nbsp&nbsp&nbsp&nbsp&nbsp"+"密码："+password);
+    $.ajax({
+        type: "post",
+        url: "/login/startLogin",    //向后端请求数据的url
+        data: {
+            "username":username,
+            "password":password,
+        },
+        success: function (data) {
+            window.location("");
+        }
+    });
 }
 function registerNow(username,password){
     layer.msg("注册开始！用户名"+username+"密码"+password);
