@@ -36,7 +36,6 @@ $(document).ready(function(){
 });
 
 function startLogin(username,password){
-    layer.msg("用户名："+username+"&nbsp&nbsp&nbsp&nbsp&nbsp"+"密码："+password);
     $.ajax({
         type: "post",
         url: "/login/startLogin",    //向后端请求数据的url
@@ -45,7 +44,10 @@ function startLogin(username,password){
             "password":password,
         },
         success: function (data) {
-            window.location("");
+            if(data.success){
+                layer.alert(data.msg);
+
+            }
         }
     });
 }
