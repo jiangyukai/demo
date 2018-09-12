@@ -4,8 +4,13 @@ $(document).ready(function(){
         var username = $("#username").val();
         var password = $("#password").val();
         var repassword = $("#repassword").val();
+        var email = $("#email").val();
         if(username == null || username == ""){
             layer.msg("用户名不能为空！");
+            return;
+        }
+        if(email == null || email == ""){
+            layer.msg("邮箱不能为空！");
             return;
         }
         if(password != repassword){
@@ -26,14 +31,14 @@ function registerNow(username,password){
     layer.msg("注册开始！用户名"+username+"密码"+password);
     $.ajax({
         type: "post",
-        url: "/hello/data",    //向后端请求数据的url
-        data: {},
+        url: "/user/add",    //向后端请求数据的url
+        data: {
+            username:$("#username").val(),
+            email:$("#email").val(),
+            password:$("#password").val(),
+        },
         success: function (data) {
-            $('button').removeClass("btn-primary").addClass("btn-success").attr('disabled', true);
 
-            viewmodel.datalist = data;
-
-            viewmodel.text = "数据请求成功，已渲染";
         }
     });
 }

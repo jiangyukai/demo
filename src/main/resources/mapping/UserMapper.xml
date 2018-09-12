@@ -26,10 +26,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zzj.model.User" >
-    insert into user (id, email, password, 
+    insert into user (id, email, password,
       username, role, status, 
       regTime, regIp)
-    values (#{id,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{username,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
       #{regtime,jdbcType=TIMESTAMP}, #{regip,jdbcType=VARCHAR})
   </insert>

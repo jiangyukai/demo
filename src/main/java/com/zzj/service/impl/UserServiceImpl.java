@@ -27,8 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int addUser(User user) {
-        User rs = userMapper.selectByPrimaryKey(1);
-        return rs.toString().length();
+       return userMapper.insert(user);
     }
 
     @Override
