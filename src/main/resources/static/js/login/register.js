@@ -28,7 +28,6 @@ $(document).ready(function(){
 });
 
 function registerNow(username,password){
-    layer.msg("注册开始！用户名"+username+"密码"+password);
     $.ajax({
         type: "post",
         url: "/user/add",    //向后端请求数据的url
@@ -38,7 +37,11 @@ function registerNow(username,password){
             password:$("#password").val(),
         },
         success: function (data) {
-
+            if(data==1){
+                layer.alert("注册成功！")
+            }else if(data==0){
+                layer.alert("此邮箱已经注册，注册失败！")
+            }
         }
     });
 }

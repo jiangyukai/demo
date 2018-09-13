@@ -35,7 +35,6 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/add", produces = {"application/json;charset=UTF-8"})
     public int addUser(HttpServletRequest request, HttpServletResponse response){
-        System.out.println(request.getParameter("username").toString());
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
@@ -47,8 +46,13 @@ public class UserController {
         user.setRegtime(DateUtils.getNowTimestamp());
         user.setRole("0");
         user.setStatus(0);
-        int rs = userService.addUser(user);
-        System.out.println(rs);
+        int rs = 0;
+        try {
+            rs = userService.addUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            rs=0;
+        }
         return rs;
     }
 
