@@ -13,6 +13,10 @@ $(document).ready(function(){
             layer.msg("邮箱不能为空！");
             return;
         }
+        if(!check(email)){
+            layer.alert("邮箱格式不正确!");
+            return;
+        }
         if(password != repassword){
             layer.msg("两次输入密码不一致！");
             return;
@@ -49,4 +53,13 @@ function registerNow(username,password){
 function gotoLogin(){
     window.location.href="/login/userLogin";
 
+}
+
+function check(value){
+    var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+    if(!reg.test(value)){ //正则验证不通过，格式不对
+        return false;
+    }else{
+        return true;
+    }
 }

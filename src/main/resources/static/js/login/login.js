@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#btnLogin").click(function(){
-        var username = $("#username").val();
+        var username = $("#email").val();
         var password = $("#password").val();
         if(username == null || username == ""){
             layer.msg("用户名不能为空！");
@@ -46,7 +46,6 @@ function startLogin(username,password){
         success: function (data) {
             if(data.success){
                 layer.alert(data.msg);
-
             }
         }
     });

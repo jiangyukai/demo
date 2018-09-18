@@ -1,8 +1,11 @@
 package com.zzj.service.impl;
 
+import com.zzj.mapper.UserMapper;
+import com.zzj.model.User;
 import com.zzj.service.LoginService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,12 +18,28 @@ import java.util.Map;
 @Service(value = "loginService")
 public class LoginServiceImpl implements LoginService {
 
+    @Resource
+    private UserMapper userMapper;
+
     @Override
     public Map<String, Object> stratLogin(HashMap<String, Object> paramMap) {
         String username = paramMap.get("username")+"";
         String password = paramMap.get("password")+"";
         Map<String,Object> rsMap = new HashMap<>();
         //用户验证操作**********************开始
+        User rsuser = userMapper.selectByUserName(username);
+        if(null == rsuser){
+            rsMap.put("success",true);
+            rsMap.put("msg","用户不存在！");
+            return rsMap;
+        }
+        String rspassword = rsuser.getPassword();
+        if(!password.equals(rspassword)){
+            rsMap.put("success",true);
+            rsMap.put("msg","密码校验错误！");
+            return rsMap;
+        }
+
         //用户验证操作**********************结束
         rsMap.put("success",true);
         rsMap.put("msg","登录成功！");
