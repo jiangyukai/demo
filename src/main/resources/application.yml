@@ -23,6 +23,8 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
+        maxPoolPreparedStatementPerConnectionSize: 20
+        #filters: stat,wall,log4j
     ##这里加个注释：本来的model是html5解析的，但是由于模板严格的解析，导致页面中所有的标签都需要有结束标签，非常麻烦，再次修改一下
     thymeleaf:
       mode: LEGACYHTML5
@@ -39,3 +41,13 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
+
+#配置日志
+logging:
+  #配置日志文件路径
+  level:
+    xatu.zsl: debug #不同目录下的日志可配置不同级别
+    org.springfromework.web: info
+    org.hibernate: error
+  #采用相对路径方式将日志文件输出到【log\myspringboot.log】
+  file: log\myspringboot.log
