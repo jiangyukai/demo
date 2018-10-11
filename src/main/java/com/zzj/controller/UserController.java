@@ -40,7 +40,7 @@ public class UserController {
         String email = request.getParameter("email");
         User user = new User();
         user.setUsername(username);
-        user.setPassword(password);
+        user.setPassword(userService.encryptBasedDes(password));
         user.setEmail(email);
         user.setRegip(Tools.getIpAddress(request));
         user.setRegtime(DateUtils.getNowTimestamp());

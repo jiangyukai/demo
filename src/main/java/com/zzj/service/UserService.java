@@ -11,4 +11,8 @@ public interface UserService {
     int addUser(User user);
 
     Object findAllUser(int pageNum, int pageSize);
+
+    String encryptBasedDes(String data);
+
+    String decryptBasedDes(String data);
 }

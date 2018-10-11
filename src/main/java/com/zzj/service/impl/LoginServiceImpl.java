@@ -3,6 +3,7 @@ package com.zzj.service.impl;
 import com.zzj.mapper.UserMapper;
 import com.zzj.model.User;
 import com.zzj.service.LoginService;
+import com.zzj.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,6 +21,8 @@ public class LoginServiceImpl implements LoginService {
 
     @Resource
     private UserMapper userMapper;
+    @Resource
+    private UserService userService;
 
     @Override
     public Map<String, Object> stratLogin(HashMap<String, Object> paramMap) {
@@ -34,7 +37,8 @@ public class LoginServiceImpl implements LoginService {
             return rsMap;
         }
         String rspassword = rsuser.getPassword();
-        if(!password.equals(rspassword)){
+        String realpass = userService.decryptBasedDes(rspassword);
+        if(!password.equals(realpass)){
             rsMap.put("success",true);
             rsMap.put("msg","密码校验错误！");
             return rsMap;
