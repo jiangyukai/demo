@@ -4,6 +4,8 @@ import com.zzj.mapper.UserMapper;
 import com.zzj.model.User;
 import com.zzj.service.LoginService;
 import com.zzj.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,6 +20,8 @@ import java.util.Map;
  **/
 @Service(value = "loginService")
 public class LoginServiceImpl implements LoginService {
+
+    protected static final Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 
     @Resource
     private UserMapper userMapper;
@@ -47,6 +51,7 @@ public class LoginServiceImpl implements LoginService {
         //用户验证操作**********************结束
         rsMap.put("success",true);
         rsMap.put("msg","登录成功！");
+        logger.info("用户:"+username+"登录成功");
         return rsMap;
     }
 }
