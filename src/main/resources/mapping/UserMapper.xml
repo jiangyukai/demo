@@ -151,5 +151,4 @@
   <insert id="insertBySql">
     ${sql}
   </insert>
-
 </mapper>
