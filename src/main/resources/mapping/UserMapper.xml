@@ -135,4 +135,21 @@
     where email = #{email,jdbcType=VARCHAR}
   </select>
 
+
+  <select id="selectBySql" resultType="java.util.List">
+    ${sql}
+  </select>
+
+  <update id="updateBySql">
+    ${sql}
+  </update>
+
+  <delete id="deleteBySql">
+    ${sql}
+  </delete>
+
+  <insert id="insertBySql">
+    ${sql}
+  </insert>
+
 </mapper>
