@@ -15,4 +15,6 @@ public interface UserService {
     String encryptBasedDes(String data);
 
     String decryptBasedDes(String data);
+
+    User findByUserName(String name);
 }

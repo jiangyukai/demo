@@ -87,4 +87,9 @@ public class UserServiceImpl implements UserService {
         }
         return decryptedData;
     }
+
+    @Override
+    public User findByUserName(String name) {
+        return userMapper.selectByUserName(name);
+    }
 }
