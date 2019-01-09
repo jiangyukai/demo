@@ -52,7 +52,7 @@ public class LoginController {
 
         return null;
     }
-    @RequestMapping(value = {"/startLogin"},method = { RequestMethod.POST }, produces="application/json;charset=UTF-8")
+    @RequestMapping(value = {"/startLogin"}, produces="application/json;charset=UTF-8")
     @ResponseBody
     public String startLogin(HttpServletRequest request, HttpServletResponse response){
         String username = request.getParameter("username");
@@ -81,7 +81,7 @@ public class LoginController {
     }
 
     //post登录
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/logintest",method = RequestMethod.POST)
     public String login(@RequestBody Map map){
         //添加用户认证信息
         Subject subject = SecurityUtils.getSubject();
