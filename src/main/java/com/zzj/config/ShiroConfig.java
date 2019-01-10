@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -38,14 +39,29 @@ public class ShiroConfig {
     }
 
     //配置filter ,设置对应的过滤条件和跳转条件
+    /* Shiro 内置过滤器，可以实现权限相关的拦截器
+     *  常用的过滤器：
+     *      anon:无需认证（登录）可以访问
+     *      authc:必须认证才可以访问
+     *      user:如果使用rememberMe的功能可以直接访问
+     *      perms:该资源必须得到资源权限才可以访问
+     *      role:该资源必须得到角色的权限才可以访问
+     */
     @Bean
     public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager){
         System.out.println("shiro filter start=================================");
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        Map<String,String> map = new HashMap<String, String>();
-        //配置不被拦截的路径
+        Map<String,String> map = new LinkedHashMap<>();
+        //配置不被拦截的路径(这个map需要是linkMap,同时如果只配置static目录是不行的，因为Springboot默认的将静态资源全部分配到static目录下，所以还需要配置他们下面的目录层级)
         map.put("/static/**", "anon");
+        map.put("/js/**", "anon");
+        map.put("/image/**", "anon");
+        map.put("/css/**", "anon");
+        map.put("/bootstrop/**", "anon");
+        map.put("/layer/**", "anon");
+        map.put("/layui/**", "anon");
+        map.put("/register.html", "anon");
         //登出
         map.put("/logout","logout");
         //对所有用户认证
